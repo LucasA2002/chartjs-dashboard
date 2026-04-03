@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o ChartJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body style="display: flex;">
+    <div>
+        <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+    </div>
+
+     <div>
+        <canvas id="myChart2" style="position: relative; height: 50vh; width: 40vw;"></canvas>
+    </div>
+</body>
+</html>
+<script>
+    const ctx = document.getElementById('myChart');
+    const ctx2 = document.getElementById('myChart2');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      datasets:
+        [{
+        label: 'Temperatura',
+        backgroundColor: 'rgb(255,0,100)',
+        borderColor: 'rgb(255,0,100)',
+        data: [30, 29, 28, 26, 24, 25],
+        borderWidth: 1
+        },
+        {
+        label: 'Umidade',
+        backgroundColor: 'rgb(0,100,255)',
+        borderColor: 'rgb(0,100,255)',
+        data: [80, 82, 80, 85, 85, 83],
+        borderWidth: 1
+        }]
+    },
+    options: {
+      scales: {
+        y: {
+            suggestedMin: 20,
+            suggestedMax: 90
+        }
+      }
+    }
+  });
+
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+      datasets:
+      [{
+        label: 'Temperatura Média',
+        backgroundColor: 'rgb(255,0,100)',
+        data: [20, 22, 24, 22, 19, 18],
+        borderWidth: 1
+      },
+      {
+        label: 'Umidade Média',
+        backgroundColor: 'rgb(0,100,255)',
+        data: [90, 89, 92, 87, 88, 80],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+            min: 0,
+            max: 100,
+            ticks: {
+                stepSize: 10
+            }
+        }
+      }
+    }
+  });
+</script>
